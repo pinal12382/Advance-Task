@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "215b4416-bacb-4c41-b411-83fa91d81fc1",
 		"name": "Employee CRUD E2E Test",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20774072"
 	},
 	"item": [
 		{

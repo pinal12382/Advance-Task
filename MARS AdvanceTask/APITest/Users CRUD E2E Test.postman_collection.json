@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "013e9b03-a02c-4733-9279-58b9932aea44",
+		"name": "Users CRUD E2E Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20774072"
+	},
+	"item": [
+		{
+			"name": "Create new User Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Assertion 1 - Ststus code check\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code Check\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"// Assertion 2 Response value check\r",
+							"\r",
+							"pm.test(\"Check key value check in Response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    // Name Check\r",
+							"    pm.expect(jsonData.name).to.eql(\"pinal\");\r",
+							"\r",
+							"    // For job\r",
+							"\r",
+							"    pm.expect(jsonData.job).to.eql(\"Testing Analyst\");\r",
+							"\r",
+							"});\r",
+							"// setting an environment variable\r",
+							"pm.test(\"Set a UserID as an environment variable\", function () {\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"UserID\", jsonData.id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"pinal\",\r\n    \"job\": \"Testing Analyst\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL1}}/api/users/create\n",
+					"host": [
+						"{{BaseURL1}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"create\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a User Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Assertion- 1 Satus Code check\r",
+							"\r",
+							"pm.test(\"Status code Check\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Assertion -2 \r",
+							"\r",
+							"pm.test(\"Check updated key value pairs in response\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"   // Check Name\r",
+							"    pm.expect(jsonData.name).to.eql(\"pinal parmar\");\r",
+							"\r",
+							"  // Check Job\r",
+							"   \r",
+							"   pm.expect(jsonData.job).to.eql(\"Testing Analyst\");\r",
+							"\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"pinal parmar\",\r\n    \"job\": \"Testing Analyst\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL1}}/api/users/update/{{UserID}}\n",
+					"host": [
+						"{{BaseURL1}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"update",
+						"{{UserID}}\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Assertion -1 Status code check\r",
+							"pm.test(\"Status code Check\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL1}}/api/users/delete/{{UserID}}\n",
+					"host": [
+						"{{BaseURL1}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"delete",
+						"{{UserID}}\n"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
