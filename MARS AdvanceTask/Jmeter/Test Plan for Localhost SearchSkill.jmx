@@ -175,11 +175,12 @@
           </ResultCollector>
           <hashTree/>
           <ResultSaver guiclass="ResultSaverGui" testclass="ResultSaver" testname="Save Responses to a file" enabled="true">
-            <stringProp name="FileSaver.filename"></stringProp>
+            <stringProp name="FileSaver.filename">Jmeter</stringProp>
             <boolProp name="FileSaver.errorsonly">false</boolProp>
-            <boolProp name="FileSaver.successonly">false</boolProp>
+            <boolProp name="FileSaver.successonly">true</boolProp>
             <boolProp name="FileSaver.skipsuffix">false</boolProp>
             <boolProp name="FileSaver.skipautonumber">false</boolProp>
+            <stringProp name="FileSaver.variablename">Result</stringProp>
           </ResultSaver>
           <hashTree/>
           <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
